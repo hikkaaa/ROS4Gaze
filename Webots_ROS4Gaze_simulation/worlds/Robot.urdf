@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<robot name="/home/kai/Gaze/gaze-simulation/worlds/Robot.urdf" xmlns:xacro="http://ros.org/wiki/xacro">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.1 0.15 0.05"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.1 0.15 0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="linear_motor" type="prismatic">
+    <parent link="base_link"/>
+    <child link="solid(5)"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0.04 0.21" rpy="0 0 1.5708"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  <link name="solid(5)">
+  </link>
+  <joint name="rotational_motor" type="continuous">
+    <parent link="solid(5)"/>
+    <child link="solid"/>
+    <axis xyz="1 0 0"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-1.47 0.04 0" rpy="0 0 0"/>
+  </joint>
+  <link name="solid">
+  </link>
+  <link name="camera">
+  </link>
+  <joint name="solid_camera_joint" type="fixed">
+    <parent link="solid"/>
+    <child link="camera"/>
+    <origin xyz="1.55 -0.04 0" rpy="-1.570796 0 -1.570796"/>
+  </joint>
+  <link name="solid(4)">
+  </link>
+  <joint name="base_link_solid(4)_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="solid(4)"/>
+    <origin xyz="0 -0.03 0.1" rpy="0 0 0"/>
+  </joint>
+  <joint name="wheel4" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid(3)"/>
+    <axis xyz="0.000796 0 1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-0.06 -0.06 0" rpy="0 1.57 0"/>
+  </joint>
+  <link name="solid(3)">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel3" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid(2)"/>
+    <axis xyz="0.000796 0 1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="-0.06 0.06 0" rpy="0 1.57 0"/>
+  </joint>
+  <link name="solid(2)">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel2" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid(1)"/>
+    <axis xyz="0.000796 0 1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0.06 -0.06 0" rpy="0 1.57 0"/>
+  </joint>
+  <link name="solid(1)">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="wheel1" type="continuous">
+    <parent link="base_link"/>
+    <child link="solid_0"/>
+    <axis xyz="0.000796 0 1"/>
+    <limit effort="10" velocity="10"/>
+    <origin xyz="0.06 0.06 0" rpy="0 1.57 0"/>
+  </joint>
+  <link name="solid_0">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.03" length="0.02"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

@@ -1,0 +1,13 @@
+HIERARCHY
+ROOT Head
+{
+	OFFSET 0.00000 0.00000 0.00000
+	CHANNELS 6 Xposition Yposition Zposition Zrotation Yrotation Xrotation 
+	End Site
+	{
+		OFFSET 0.07217 1.51590 -0.14537
+	}
+}
+MOTION
+Frames: 200
+Frame Time: .0083333

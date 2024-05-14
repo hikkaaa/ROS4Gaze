@@ -1,0 +1,353 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Grass.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/humans/skin_animated_humans/protos/CharacterSkin.proto"
+IMPORTABLE EXTERNPROTO "../protos/MyProto.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/FifaSoccerBall.proto"
+
+WorldInfo {
+  info [
+    "Skin animation of human models."
+    "In this example BVH motions are played on FBX MakeHuman models."
+    "Author: Guillaume Michel <guillaume.michel.202@gmail.com>"
+  ]
+  title "Human Skin Animation"
+}
+Viewpoint {
+  orientation 0.04052822183015112 -0.06467031058304848 -0.9970833536692798 5.160915291568473
+  position -3.3160552314681384 -18.244503363912976 2.7068334493635557
+}
+TexturedBackground {
+  texture "noon_cloudy_countryside"
+}
+TexturedBackgroundLight {
+  texture "noon_cloudy_countryside"
+}
+Floor {
+  size 50 50
+  tileSize 2 2
+  appearance Grass {
+    type "mossy"
+  }
+}
+DEF ROBERT Robot {
+  translation -1.59 -3 0
+  children [
+    Robot {
+      translation -0.06 0 2.12
+      children [
+        Hinge2Joint {
+          jointParameters HingeJointParameters {
+            position 0.5235987755982988
+            axis 0 1 0
+          }
+          jointParameters2 JointParameters {
+            position 0.3490658503988659
+          }
+          device [
+            RotationalMotor {
+              name "pitch_gaze"
+            }
+          ]
+          device2 [
+            RotationalMotor {
+              name "yaw_gaze"
+            }
+          ]
+          endPoint DEF gaze_tracker Solid {
+            translation 5.03982 0.01 -0.139941
+            rotation 0 -1 0 1.57
+            children [
+              Shape {
+                appearance Appearance {
+                  material Material {
+                    transparency 0.7
+                  }
+                }
+                geometry Cone {
+                  bottomRadius 5.7
+                  height 10
+                }
+              }
+            ]
+            boundingObject Shape {
+              appearance Appearance {
+                material Material {
+                  transparency 0.7
+                }
+              }
+              geometry IndexedFaceSet {
+                coord Coordinate {
+                  point [
+                    4.5 5 -5
+                    0 0 5
+                    -2 -5 -5
+                    4.5 -5 -5
+                    -2 5 -5
+                  ]
+                }
+                coordIndex [
+                  0, 4, 3, -1, 1, 4, 0, -1, 2, 4
+                  1, -1, 3, 4, 2, -1, 0, 3, 2, 1
+                ]
+              }
+            }
+          }
+        }
+      ]
+      name "gaze_control"
+      controller "gaze_controller"
+      controllerArgs [
+        ""
+      ]
+      supervisor TRUE
+    }
+    CharacterSkin {
+      name "Robert"
+      model "Robert"
+    }
+  ]
+  name "robert"
+  controller "bvh_animation"
+  controllerArgs [
+    "-d"
+    "Robert"
+    "-f"
+    "/home/kai/Downloads/webots/projects/humans/gaze-simulation/motions/gaze-testv1.bvh"
+  ]
+  supervisor TRUE
+}
+Robot {
+  translation 2.373340155763993 -0.49861895841459497 0.10847835794678141
+  rotation -0.005466204982729209 0.0022364397810101366 0.9999825593180076 1.8319182572572292
+  children [
+    SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+          name "linear_motor"
+        }
+      ]
+      endPoint Solid {
+        translation 4.76328e-05 0.1 0.59
+        rotation 0 0 1 1.57
+        children [
+          DEF solid HingeJoint {
+            jointParameters HingeJointParameters {
+            }
+            device [
+              RotationalMotor {
+                name "rotational_motor"
+              }
+            ]
+            endPoint Solid {
+              translation 0.09 0 0.02
+              rotation 1 0 0 0
+              children [
+                Camera {
+                  translation 0.08 0 0
+                  fieldOfView 1
+                  width 640
+                  height 640
+                }
+                Shape {
+                  appearance PBRAppearance {
+                  }
+                  geometry Sphere {
+                    radius 0.0852
+                  }
+                }
+              ]
+            }
+          }
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Box {
+              size 0.2 0.05 0.05
+            }
+          }
+        ]
+        name "solid(5)"
+      }
+    }
+    Solid {
+      translation 0 -0.03 0.41
+      children [
+        Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.08 0.08 0.7
+          }
+        }
+      ]
+      name "solid(4)"
+    }
+    DEF BODY Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 0.3 0.6 0.1
+      }
+    }
+    DEF wheel1 HingeJoint {
+      jointParameters DEF wheel1 HingeJointParameters {
+        position -6.937740912778615e-06
+        anchor 0.154 0.229 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint DEF wheel1 Solid {
+        translation 0.154 0.22899993741315394 -0.00902302999978257
+        rotation -3.4709352272810977e-06 0.9999999999879622 -3.4681723375587402e-06 1.570000000011994
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.1
+            }
+          }
+        ]
+        name "wheel1"
+        boundingObject USE WHEEL
+        physics DEF Physics_Wheel Physics {
+        }
+        translationStep 0
+        rotationStep 0
+        linearVelocity 2.97123572098658e-09 2.4023871838787114e-09 3.231089617639662e-12
+        angularVelocity 6.499222910310779e-10 -2.5135153589099524e-09 -6.754538190721861e-09
+      }
+    }
+    DEF wheel2 HingeJoint {
+      jointParameters DEF wheel1 HingeJointParameters {
+        position 0.01029557081449974
+        anchor 0.154427 -0.229029 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint DEF wheel2 Solid {
+        translation 0.154 -0.2288474382582077 -0.01481751606356183
+        rotation 0.005151796195872658 0.9999734797627879 0.005147695315119299 1.5700265205806845
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.1
+            }
+          }
+        ]
+        name "wheel2"
+        boundingObject USE WHEEL
+        physics DEF Physics_Wheel Physics {
+        }
+        translationStep 0
+        rotationStep 0
+        linearVelocity 2.268191261272713e-09 -9.978599009445293e-10 -3.235755283177994e-12
+        angularVelocity -2.6730730328132798e-08 9.99615936905265e-08 -7.713233852471886e-09
+      }
+    }
+    DEF wheel3 HingeJoint {
+      jointParameters DEF wheel1 HingeJointParameters {
+        position 8.131868178376809e-06
+        anchor -0.154 0.229 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint DEF wheel3 Solid {
+        translation -0.154 0.22900013404025907 -0.0164804993599768
+        rotation 4.069871872937783e-06 0.9999999999834494 4.066632209045745e-06 1.570000000016501
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.1
+            }
+          }
+        ]
+        name "wheel3"
+        boundingObject USE WHEEL
+        physics DEF Physics_Wheel Physics {
+        }
+        translationStep 0
+        rotationStep 0
+        linearVelocity 1.3829036637549794e-09 1.9777776366149784e-09 1.062367486531248e-11
+        angularVelocity 7.299247335252174e-09 -2.7399332159204355e-08 -6.521722803631922e-09
+      }
+    }
+    DEF wheel4 HingeJoint {
+      jointParameters DEF wheel1 HingeJointParameters {
+        position 0.008491391252015585
+        anchor -0.154 -0.229 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint DEF wheel4 Solid {
+        translation -0.154 -0.22889005392011638 -0.012947633199527832
+        rotation 0.004249027510182483 0.9999819599681261 0.004245645242239785 1.5700180401889607
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Cylinder {
+              height 0.05
+              radius 0.1
+            }
+          }
+        ]
+        name "wheel4"
+        boundingObject USE WHEEL
+        physics DEF Physics_Wheel Physics {
+        }
+        translationStep 0
+        rotationStep 0
+        linearVelocity 1.5798075725717693e-09 -1.1820876327524075e-09 -1.068777015260026e-11
+        angularVelocity -3.179703488615993e-09 1.181929493768499e-08 -6.888625507342405e-09
+      }
+    }
+  ]
+  name "locobot"
+  boundingObject USE BODY
+  physics Physics {
+  }
+  controller "locobot_controller"
+  linearVelocity 2.3414093770244033e-09 6.277917104194032e-10 -4.310954358920248e-12
+  angularVelocity -3.236830651549333e-11 4.003285275921559e-11 -6.778425768345599e-09
+}
+Robot {
+  name "subscriber"
+  controller "gaze_subscriber"
+}
+DEF ball FifaSoccerBall {
+  hidden linearVelocity_0 -4.675823449237853e-06 -1.446492401135288e-07 5.697040406041445e-06
+  hidden angularVelocity_0 1.5793738401599008e-06 6.881983965765798e-08 1.2873509115514276e-06
+  translation 8.276081931798396 1.3224271899969369 0.11252998889938225
+  rotation 0.33915982333292205 -0.41559805352312484 -0.8439483823934797 1.7841735816555588
+  name "ball"
+}
