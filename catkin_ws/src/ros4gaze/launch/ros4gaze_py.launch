@@ -1,0 +1,14 @@
+<launch>
+	<node
+	  pkg = 'ros4gaze'
+	  type = 'gaze_publisher.py'
+	  name = 'gaze_publisher'
+	  output = 'screen'
+	/>	
+	<node
+	  pkg = 'ros4gaze'
+	  type = 'gaze_subscriber.py'
+	  name = 'gaze_subscriber'
+	  output = 'screen'
+	/>	
+</launch>

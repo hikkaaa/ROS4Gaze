@@ -1,0 +1,8 @@
+# CMake generated Testfile for 
+# Source directory: /home/kai/catkin_ws/src/image_pipeline/image_proc/test
+# Build directory: /home/kai/catkin_ws/build/image_pipeline/image_proc/test
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(_ctest_image_proc_rostest_test_test_rectify.xml "/home/kai/catkin_ws/build/catkin_generated/env_cached.sh" "/home/kai/miniforge3/envs/ros_env/bin/python3.9" "/home/kai/miniforge3/envs/ros_env/share/catkin/cmake/test/run_tests.py" "/home/kai/catkin_ws/build/test_results/image_proc/rostest-test_test_rectify.xml" "--return-code" "/home/kai/miniforge3/envs/ros_env/bin/python3.9 /home/kai/miniforge3/envs/ros_env/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/kai/catkin_ws/src/image_pipeline/image_proc --package=image_proc --results-filename test_test_rectify.xml --results-base-dir \"/home/kai/catkin_ws/build/test_results\" /home/kai/catkin_ws/src/image_pipeline/image_proc/test/test_rectify.xml ")
+set_tests_properties(_ctest_image_proc_rostest_test_test_rectify.xml PROPERTIES  _BACKTRACE_TRIPLES "/home/kai/miniforge3/envs/ros_env/share/catkin/cmake/test/tests.cmake;160;add_test;/home/kai/miniforge3/envs/ros_env/share/rostest/cmake/rostest-extras.cmake;52;catkin_run_tests_target;/home/kai/miniforge3/envs/ros_env/share/rostest/cmake/rostest-extras.cmake;80;add_rostest;/home/kai/miniforge3/envs/ros_env/share/rostest/cmake/rostest-extras.cmake;100;_add_rostest_google_test;/home/kai/catkin_ws/src/image_pipeline/image_proc/test/CMakeLists.txt;6;add_rostest_gtest;/home/kai/catkin_ws/src/image_pipeline/image_proc/test/CMakeLists.txt;0;")

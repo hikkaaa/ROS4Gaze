@@ -1,0 +1,8 @@
+prefix=/home/kai/catkin_ws/install
+
+Name: rosagaze
+Description: Description of rosagaze
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -1,0 +1,8 @@
+prefix=/home/kai/catkin_ws/devel
+
+Name: image_proc
+Description: Description of image_proc
+Version: 1.17.0
+Cflags: -I/home/kai/catkin_ws/devel/include -I/home/kai/catkin_ws/src/image_pipeline/image_proc/include -I/home/kai/miniforge3/envs/ros_env/include/opencv4
+Libs: -L${prefix}/lib -limage_proc /home/kai/miniforge3/envs/ros_env/lib/libopencv_calib3d.so.406
+Requires: image_geometry roscpp sensor_msgs
